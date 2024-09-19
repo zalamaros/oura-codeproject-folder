@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oura API Example</title>
+    </head>
+    <body>
+        <h1>Oura API Data</h1>
+    <div id="oura-data"></div>
+
+    <script>
+        const token = X4I3VDIN5VQCRFXG537LL55HGDVON4VP; // Replace with your Oura token
+
+        // Fetch Sleep Data
+        fetch('https://api.ouraring.com/v2/usercollection/sleep', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Log data to console
+            document.getElementById('oura-data').innerText = JSON.stringify(data, null, 2); // Display data in HTML
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    </script>
+    </body>
+</html>
